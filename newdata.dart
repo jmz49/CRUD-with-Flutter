@@ -15,7 +15,7 @@ class _NewDataState extends State<NewData> {
 
   String titre, desc;
 
-  void dbSelectAllData() async {
+  void insertData() async {
       FormData formData = new FormData.fromMap({
         "firstname": firstname.text,
         "lastname": lastname.text,
@@ -28,7 +28,7 @@ class _NewDataState extends State<NewData> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter Mysql : Insert"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromRGBO(109, 14, 55, 1.0),
       ),
       body: ListView(
         children: <Widget>[
@@ -46,18 +46,18 @@ class _NewDataState extends State<NewData> {
                         controller: firstname,
                         decoration: InputDecoration(
                           hintText: "Prénom",
-                          hintStyle: TextStyle(color: Colors.blueAccent),
+                          hintStyle: TextStyle(color: Color.fromRGBO(109, 14, 55, 1.0)),
                           labelText: "Prénom",
-                          labelStyle: TextStyle(color: Colors.blueAccent),
+                          labelStyle: TextStyle(color: Color.fromRGBO(109, 14, 55, 1.0)),
                           ),
                       ),
                       TextField(
                         controller: lastname,
                         decoration: InputDecoration(
                            hintText: "Nom",
-                          hintStyle: TextStyle(color: Colors.blueAccent),
+                          hintStyle: TextStyle(color: Color.fromRGBO(109, 14, 55, 1.0)),
                           labelText: "Nom",
-                          labelStyle: TextStyle(color: Colors.blueAccent),
+                          labelStyle: TextStyle(color: Color.fromRGBO(109, 14, 55, 1.0)),
                           ),
                       ),
                       SizedBox(
@@ -66,13 +66,14 @@ class _NewDataState extends State<NewData> {
                       MaterialButton(
                         child: 
                           Text("Save",
-                          style: TextStyle(color : Colors.white),
+                            style: TextStyle(fontSize:  18.0, fontWeight: FontWeight.bold, color : Colors.white),
                           ),
-                          color: Colors.blueAccent,
+                          color: Color.fromRGBO(109, 14, 55, 1.0),
                         onPressed: () {
-                          dbSelectAllData();
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => Home(),
+                          insertData();
+                          Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context)=> Home(),
                           ));
                         },
                       ),

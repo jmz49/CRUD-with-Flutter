@@ -18,7 +18,7 @@ class _EditDataState extends State<EditData> {
   TextEditingController lastname;
   // final GlobalKey<ScaffoldState> _scaffoldstate = new GlobalKey<ScaffoldState>();
 
-  void editData() async {
+  void updateData() async {
     try {
       FormData formData = FormData.fromMap({
         'id':widget.list[widget.index]['id'],
@@ -47,7 +47,7 @@ class _EditDataState extends State<EditData> {
       appBar: AppBar(
         //title: Text("modifier ${widget.list[widget.index]['name']}"),
         title: Text("Flutter Mysql : Update"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromRGBO(109, 14, 55, 1.0),
       ),
       body: ListView(
         children: <Widget>[
@@ -78,14 +78,15 @@ class _EditDataState extends State<EditData> {
                           labelStyle: TextStyle(color: Colors.blueAccent),
                           ),
                       ),
-                      SizedBox(height: 50,),
+                      SizedBox(height: 50,
+                      ),
                       MaterialButton(
-                        child: Text("EDIT",
-                          style: TextStyle(color : Colors.white),
+                        child: Text("Update",
+                          style: TextStyle(fontSize:  18.0, fontWeight: FontWeight.bold, color : Colors.white),
                           ),
-                          color: Colors.blueAccent,
+                          color: Color.fromRGBO(109, 14, 55, 1.0),
                         onPressed: (){
-                          editData();
+                          updateData();
                           Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context)=> Home(),

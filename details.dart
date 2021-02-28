@@ -26,15 +26,13 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     var status = 200;
     GlobalKey sc = new GlobalKey<ScaffoldState>();
-    //MediaQuery.of(context).size.width;
-    //MediaQuery.of(context).size.height;
     void confirm() {
       AlertDialog alertDialog = new AlertDialog(
-        backgroundColor: Colors.yellowAccent,
+        backgroundColor: Color.fromRGBO(250, 217, 151, 1.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
-        content: Text("ETES VOUS SUR ?",
+        content: Text("ETES VOUS SÛR ?",
         style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color : Colors.blueAccent),
         ),
         actions: <Widget>[
@@ -42,7 +40,8 @@ class _DetailsState extends State<Details> {
             children: <Widget>[
               MaterialButton(
                 child: Text("SUPPRIMER",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color : Colors.redAccent),
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color : Color.fromRGBO(195, 25, 99, 1.0),
+                ),
                 ),
                 onPressed: () {
                   delete();
@@ -70,7 +69,7 @@ class _DetailsState extends State<Details> {
       appBar: AppBar(
         //title: Text("${widget.list[widget.index]['name']}"),
         title: Text("Flutter Mysql : Update / Delete"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromRGBO(109, 14, 55, 1.0),
       ),
       key: sc,
       body: status == 200
@@ -100,10 +99,10 @@ class _DetailsState extends State<Details> {
                               height: 50,
                             ),
                             MaterialButton(
-                              child: Text("EDIT",
-                              style: TextStyle(color : Colors.white),
+                              child: Text("Edit",
+                              style: TextStyle(fontSize:  16.0, fontWeight: FontWeight.bold, color : Colors.white),
                               ),
-                              color: Colors.blueAccent,
+                              color: Color.fromRGBO(109, 14, 55, 1.0),
                               onPressed: ()=>Navigator.of(context).push(
                                   MaterialPageRoute(
                                    builder: (BuildContext context)=> EditData(list:widget.list,index:widget.index),
@@ -114,10 +113,10 @@ class _DetailsState extends State<Details> {
                               height: 20,
                             ),
                             MaterialButton(
-                                child: Text("DELETE",
-                              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color : Colors.white),
+                                child: Text("Delete",
+                              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color : Colors.white),
                               ),
-                              color: Colors.redAccent,
+                              color: Color.fromRGBO(109, 14, 55, 1.0),
                                 onPressed: () {
                                   confirm();
                                 }),

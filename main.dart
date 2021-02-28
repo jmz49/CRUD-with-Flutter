@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
@@ -12,7 +11,7 @@ void main() => runApp(MaterialApp(
   title: "Flutter Mysql",
   debugShowCheckedModeBanner: false,
   theme: ThemeData(
-    primarySwatch: Colors.red,
+    primaryColor: Colors.purpleAccent
   ),
   home: Home(),
 ));
@@ -23,9 +22,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-   Future<List> getData() async {
+   Future<List> getAllData() async {
+     final temp= await http.get("http://jmzxp.com/flutter_app_01/dbselectall.php");
      final res= await http.get("http://jmzxp.com/flutter_app_01/dbselectall.php");
-     //print(json.decode(res.body));
      return json.decode(res.body);
   }
   @override
@@ -33,11 +32,11 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter Mysql : Select All"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromRGBO(109, 14, 55, 1.0),
       ),
 
      floatingActionButton: FloatingActionButton(
-       backgroundColor: Colors.blueAccent,
+       backgroundColor: Color.fromRGBO(109, 14, 55, 1.0),
         onPressed: ()=>Navigator.of(context).push(
     MaterialPageRoute(
      builder: (BuildContext context)=> NewData(),
@@ -47,13 +46,13 @@ class _HomeState extends State<Home> {
       ),
 
       body: FutureBuilder<List>(
-        future: getData(),
-        builder:(ctx,ss) {
-          if(ss.hasError){
+        future: getAllData(),
+        builder:(ctx,snapshot) {
+          if(snapshot.hasError){
             print("Error");
           }
-          if (ss.hasData){
-          return Items(list:ss.data);
+          if (snapshot.hasData){
+          return Items(list:snapshot.data);
           }else{
             return CircularProgressIndicator();
           }
@@ -75,10 +74,10 @@ class Items extends StatelessWidget {
 
             leading: ConstrainedBox(
               constraints: BoxConstraints(
-                minWidth: 50,
-                minHeight: 50,
-                maxWidth: 50,
-                maxHeight: 50,
+                minWidth: 0.0,
+                minHeight: 0.0,
+                maxWidth: double.infinity,
+                maxHeight: double.infinity,
               ),
             ),
 
@@ -96,3 +95,5 @@ class Items extends StatelessWidget {
     );
   }
 }
+
+
